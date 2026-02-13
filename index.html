@@ -59,62 +59,16 @@ padding:20px;
 #days{font-size:24px;margin-bottom:30px;}
 
 /* Galeri */
-.heart-gallery{
-position:relative;
-width:320px;
-height:320px;
-margin:0 auto 30px auto;
-}
-
-.heart-gallery img{
-position:absolute;
-width:95px;height:95px;
-object-fit:cover;
-border-radius:20px;
-box-shadow:0 0 20px rgba(255,255,255,0.8);
-cursor:pointer;
-transition:0.3s;
-}
-
-.heart-gallery img:hover{
-transform:scale(1.2);
-}
-
 /* Kalp düzeni */
-/* Daha düzgün kalp şekli */
-.heart-gallery{
-position:relative;
-width:340px;
-height:300px;
-margin:0 auto 40px auto;
-}
+.heart-gallery img:nth-child(1){ top:0; left:112px; }
+.heart-gallery img:nth-child(2){ top:45px; left:45px; }
+.heart-gallery img:nth-child(3){ top:45px; right:45px; }
+.heart-gallery img:nth-child(4){ top:120px; left:0; }
+.heart-gallery img:nth-child(5){ top:120px; right:0; }
+.heart-gallery img:nth-child(6){ bottom:45px; left:70px; }
+.heart-gallery img:nth-child(7){ bottom:45px; right:70px; }
+.heart-gallery img:nth-child(8){ bottom:0; left:112px; }
 
-.heart-gallery img{
-position:absolute;
-width:90px;
-height:90px;
-object-fit:cover;
-border-radius:20px;
-}
-
-/* Üst bombeler */
-.heart-gallery img:nth-child(1){ top:0; left:85px; }
-.heart-gallery img:nth-child(2){ top:0; right:85px; }
-
-/* Orta kısım */
-.heart-gallery img:nth-child(3){ top:60px; left:40px; }
-.heart-gallery img:nth-child(4){ top:60px; right:40px; }
-
-/* Geniş orta */
-.heart-gallery img:nth-child(5){ top:120px; left:10px; }
-.heart-gallery img:nth-child(6){ top:120px; right:10px; }
-
-/* Alt daralan */
-.heart-gallery img:nth-child(7){ top:180px; left:85px; }
-.heart-gallery img:nth-child(8){ top:240px; left:125px; }
-
-
-/* Modal */
 #modal{
 display:none;
 position:fixed;
@@ -247,7 +201,7 @@ window.open("https://www.google.com/maps?q=36.76030911082452,34.54705348598809",
 }
 
 /* Yazı animasyonu */
-var text="İyi ki Varsın Aşkım ❤️";
+var text="Sevgililer Günümüz Kutlu Olsun Aşkım ❤️";
 var i=0;
 function typeWriter(){
 if(i<text.length){
