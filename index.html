@@ -25,7 +25,8 @@ text-align:center;font-size:18px;
 }
 
 button{
-margin-top:20px;padding:14px 30px;
+margin:10px;
+padding:14px 30px;
 border:none;border-radius:30px;
 background:white;color:#ff4da6;
 font-size:18px;cursor:pointer;
@@ -57,7 +58,7 @@ padding:20px;
 #typedText{font-size:50px;margin-bottom:20px;}
 #days{font-size:24px;margin-bottom:30px;}
 
-/* Galeri Ortalanmış */
+/* Galeri */
 .heart-gallery{
 position:relative;
 width:320px;
@@ -145,6 +146,7 @@ pointer-events:none;
 </div>
 
 <button onclick="openMap()">Her şeyin başladığı yer ❤️</button>
+<button onclick="openFirstKiss()">Seni ilk öptüğüm yer 💋</button>
 
 </div>
 </div>
@@ -174,7 +176,7 @@ alert("Yanlış şifre 😢");
 
 /* CANLI SAYAÇ */
 function startLiveCounter(){
-var startDate=new Date("2024-07-24T00:00:00");
+var startDate=new Date(2024,6,24,0,0,0);
 
 setInterval(function(){
 var now=new Date();
@@ -211,8 +213,13 @@ function closeModal(){
 document.getElementById("modal").style.display="none";
 }
 
+/* GOOGLE MAPS BUTONLARI */
 function openMap(){
-window.open("https://maps.app.goo.gl/iQPvK8JnuXxtyxuM6","_blank");
+window.open("https://www.google.com/maps?q=41.0082,28.9784","_blank");
+}
+
+function openFirstKiss(){
+window.open("https://www.google.com/maps?q=40.9876,29.1234","_blank");
 }
 
 /* Yazı animasyonu */
