@@ -2,233 +2,215 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Biz ❤️</title>
+<title>Bizim Hikayemiz ❤️</title>
 
 <style>
-body{
-margin:0;
-padding:0;
-font-family:Arial, sans-serif;
-background:black;
-color:white;
-text-align:center;
-overflow-x:hidden;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial, sans-serif;}
 
-/* GİRİŞ */
+/* LOGIN */
 #login{
 position:fixed;
+width:100%;height:100vh;
+background:#ff4da6;color:white;
+display:flex;flex-direction:column;
+justify-content:center;align-items:center;
+text-align:center;z-index:10;
+}
+
+#login h1{font-size:50px;margin-bottom:20px;}
+#login p{font-size:22px;margin-bottom:20px;}
+
+input{
+padding:15px;border:none;border-radius:30px;
+text-align:center;font-size:18px;
+}
+
+/* BUTONLAR */
+button{
+display:block;
+margin:15px auto;
+padding:14px 30px;
+border:none;border-radius:30px;
+background:white;color:#ff4da6;
+font-size:18px;cursor:pointer;
+transition:0.3s;
+}
+button:hover{transform:scale(1.1);}
+
+/* CONTENT */
+#content{
+display:none;
+position:relative;
 width:100%;
-height:100%;
-background:black;
+min-height:100vh;
+color:white;text-align:center;
+background-size:cover;
+background-position:center;
+}
+
+/* OVERLAY */
+.overlay{
+background:rgba(0,0,0,0.6);
+width:100%;
+min-height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-z-index:1000;
+padding:40px 20px;
 }
 
-#login h1{
-font-size:40px;
-}
-
-#login p{
-font-size:20px;
-opacity:0.8;
-}
-
-#login input{
-padding:12px;
-font-size:18px;
-border-radius:20px;
-border:none;
-margin-top:15px;
-text-align:center;
-}
-
-#login button{
-margin-top:15px;
-padding:10px 25px;
-font-size:18px;
-border-radius:20px;
-border:none;
-cursor:pointer;
-background:pink;
-}
-
-/* İÇERİK */
-#content{
-display:none;
-padding:30px;
-}
-
-/* SAYAÇ */
-#counter{
-font-size:22px;
-margin:30px 0;
-}
+#typedText{font-size:50px;margin-bottom:20px;}
+#days{font-size:24px;margin-bottom:30px;}
 
 /* GALERİ */
-.gallery{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:15px;
+.heart-gallery{
+position:relative;
+width:320px;
+height:320px;
+margin:0 auto 30px auto;
 }
 
-.gallery img{
-width:200px;
-height:200px;
+.heart-gallery img{
+position:absolute;
+width:95px;height:95px;
 object-fit:cover;
 border-radius:20px;
+box-shadow:0 0 20px rgba(255,255,255,0.8);
 cursor:pointer;
 transition:0.3s;
 }
 
-.gallery img:hover{
-transform:scale(1.05);
+.heart-gallery img:hover{
+transform:scale(1.2);
 }
+
+/* Kalp düzeni */
+.heart-gallery img:nth-child(1){ top:0; left:112px; }
+.heart-gallery img:nth-child(2){ top:45px; left:45px; }
+.heart-gallery img:nth-child(3){ top:45px; right:45px; }
+.heart-gallery img:nth-child(4){ top:120px; left:0; }
+.heart-gallery img:nth-child(5){ top:120px; right:0; }
+.heart-gallery img:nth-child(6){ bottom:45px; left:70px; }
+.heart-gallery img:nth-child(7){ bottom:45px; right:70px; }
+.heart-gallery img:nth-child(8){ bottom:0; left:112px; }
 
 /* MODAL */
 #modal{
 display:none;
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.9);
-justify-content:center;
-align-items:center;
-z-index:2000;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.95);
+justify-content:center;align-items:center;
 }
-
 #modal img{
-max-width:90%;
-max-height:90%;
+max-width:95%;
+max-height:95%;
 object-fit:contain;
 }
 
-/* KALP YAĞMURU */
+/* KALPLER */
 .heart{
 position:fixed;
-top:-10px;
+top:-10vh;
 color:pink;
-font-size:20px;
-animation:fall linear forwards;
+animation:fall linear infinite;
+pointer-events:none;
 }
-
 @keyframes fall{
-to{
-transform:translateY(100vh);
-opacity:0;
-}
-}
-
-/* KONUM BUTONLARI (YENİ EKLENDİ) */
-.mapBtn{
-padding:15px 30px;
-font-size:18px;
-border-radius:30px;
-border:none;
-background:linear-gradient(45deg,#ff4e8a,#ff8ac6);
-color:white;
-cursor:pointer;
-margin:10px;
-transition:0.3s;
-}
-
-.mapBtn:hover{
-transform:scale(1.08);
+0%{transform:translateY(0);}
+100%{transform:translateY(110vh);}
 }
 </style>
 </head>
 
 <body>
 
-<!-- GİRİŞ -->
 <div id="login">
-<h1>❤️</h1>
-<p>Kalbimin atmaya başladığı tarih…</p>
-<input type="password" id="password" placeholder="Şifre">
-<button onclick="checkPassword()">Giriş</button>
+<h1>Bu Site Sadece Kalbimin Sahibine Ait 💖</h1>
+<p>Kalbimin atmaya başladığı tarih...</p>
+<input type="password" id="password" placeholder="Şifreyi Gir">
+<button onclick="checkPassword()">Giriş Yap 💕</button>
 </div>
 
-<!-- ANA İÇERİK -->
 <div id="content">
+<div class="overlay">
 
-<h1>Biz ❤️</h1>
+<h1 id="typedText"></h1>
+<h2 id="days"></h2>
 
-<div id="counter"></div>
-
-<div class="gallery">
-<img src="foto1.jpg" onclick="openModal(this.src)">
-<img src="foto2.jpg" onclick="openModal(this.src)">
-<img src="foto3.jpg" onclick="openModal(this.src)">
-<img src="foto4.jpg" onclick="openModal(this.src)">
-<img src="foto5.jpg" onclick="openModal(this.src)">
-<img src="foto6.jpg" onclick="openModal(this.src)">
-<img src="foto7.jpg" onclick="openModal(this.src)">
-<img src="foto8.jpg" onclick="openModal(this.src)">
+<div class="heart-gallery">
+<img src="foto1.jpeg" onclick="openModal(this.src)">
+<img src="foto2.jpeg" onclick="openModal(this.src)">
+<img src="foto3.jpeg" onclick="openModal(this.src)">
+<img src="foto4.jpeg" onclick="openModal(this.src)">
+<img src="foto5.jpeg" onclick="openModal(this.src)">
+<img src="foto6.jpeg" onclick="openModal(this.src)">
+<img src="foto7.jpeg" onclick="openModal(this.src)">
+<img src="foto8.jpeg" onclick="openModal(this.src)">
 </div>
 
-<!-- BURAYA EKLENDİ -->
-<div style="margin-top:40px;">
-
-<a href="https://www.google.com/maps?q=36.770678,34.537412" target="_blank">
-<button class="mapBtn">Seni İlk Gördüğüm Yer 💕</button>
-</a>
-
-<a href="https://www.google.com/maps?q=36.76031,34.54705" target="_blank">
-<button class="mapBtn">Seni İlk Öptüğüm Yer 💋</button>
-</a>
+<button onclick="openMap()">Her şeyin başladığı yer ❤️</button>
+<button onclick="openFirstKiss()">Seni ilk öptüğüm yer 💋</button>
 
 </div>
-
 </div>
 
-<!-- MODAL -->
 <div id="modal" onclick="closeModal()">
 <img id="modalImg">
 </div>
 
-<script>
+<audio id="music" loop>
+<source src="anotherlove.mp3" type="audio/mpeg">
+</audio>
 
-/* ŞİFRE */
+<script>
 function checkPassword(){
-var pass = document.getElementById("password").value;
-if(pass === "24072024"){
+if(document.getElementById("password").value==="24072024"){
 document.getElementById("login").style.display="none";
 document.getElementById("content").style.display="block";
+document.getElementById("music").play();
+startHearts();
+startLiveCounter();
+typeWriter();
+startSlideshow();
+}else{
+alert("Yanlış şifre 😢");
 }
-else{
-alert("Yanlış şifre ❤️");
-}
-}
-
-/* SAYAÇ */
-var startDate = new Date("2024-07-24T00:00:00");
-
-function updateCounter(){
-var now = new Date();
-var diff = now - startDate;
-
-var days = Math.floor(diff/(1000*60*60*24));
-var hours = Math.floor((diff/(1000*60*60))%24);
-var minutes = Math.floor((diff/(1000*60))%60);
-var seconds = Math.floor((diff/1000)%60);
-
-document.getElementById("counter").innerHTML =
-days+" gün "+
-hours+" saat "+
-minutes+" dakika "+
-seconds+" saniyedir birlikteyiz ❤️";
 }
 
-setInterval(updateCounter,1000);
+/* CANLI SAYAÇ */
+function startLiveCounter(){
+var startDate=new Date(2024,6,24,0,0,0);
 
-/* MODAL */
+setInterval(function(){
+var now=new Date();
+var diff=now-startDate;
+
+var days=Math.floor(diff/(1000*60*60*24));
+var hours=Math.floor((diff/(1000*60*60))%24);
+var minutes=Math.floor((diff/1000/60)%60);
+var seconds=Math.floor((diff/1000)%60);
+
+document.getElementById("days").innerHTML=
+days+" gün "+hours+" saat "+minutes+" dakika "+seconds+" saniyedir birlikteyiz ❤️";
+},1000);
+}
+
+function startHearts(){
+for(let i=0;i<40;i++){
+let heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+15)+"px";
+heart.style.animationDuration=(Math.random()*4+3)+"s";
+document.body.appendChild(heart);
+}
+}
+
 function openModal(src){
 document.getElementById("modal").style.display="flex";
 document.getElementById("modalImg").src=src;
@@ -238,19 +220,45 @@ function closeModal(){
 document.getElementById("modal").style.display="none";
 }
 
-/* KALP YAĞMURU */
-function createHeart(){
-var heart=document.createElement("div");
-heart.classList.add("heart");
-heart.innerHTML="❤️";
-heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(Math.random()*3+2)+"s";
-document.body.appendChild(heart);
-setTimeout(()=>{heart.remove();},5000);
+/* HARİTA BUTONLARI */
+function openMap(){
+window.open("https://www.google.com/maps?q=41.0082,28.9784","_blank");
 }
 
-setInterval(createHeart,300);
+function openFirstKiss(){
+window.open("https://www.google.com/maps?q=40.9876,29.1234","_blank");
+}
 
+/* Yazı animasyonu */
+var text="İyi ki Varsın Aşkım ❤️";
+var i=0;
+function typeWriter(){
+if(i<text.length){
+document.getElementById("typedText").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typeWriter,100);
+}
+}
+
+/* Slideshow */
+var images=[
+"foto1.jpeg","foto2.jpeg","foto3.jpeg","foto4.jpeg",
+"foto5.jpeg","foto6.jpeg","foto7.jpeg","foto8.jpeg"
+];
+
+var current=0;
+
+function startSlideshow(){
+document.getElementById("content").style.backgroundImage=
+"url('"+images[0]+"')";
+
+setInterval(function(){
+current++;
+if(current>=images.length){current=0;}
+document.getElementById("content").style.backgroundImage=
+"url('"+images[current]+"')";
+},4000);
+}
 </script>
 
 </body>
