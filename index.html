@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Sevgililer Günümüz 💖</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ff69b4;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: white;
+}
+
+#login {
+    margin-top: 200px;
+}
+
+input {
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: white;
+    color: #ff69b4;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #ffe6f0;
+}
+
+#siteContent {
+    display: none;
+    margin-top: 150px;
+}
+
+h1 {
+    font-size: 50px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="login">
+    <h2>Bu siteye sadece aşkım girebilir 💕</h2>
+    <input type="password" id="password" placeholder="Şifreyi Gir">
+    <br>
+    <button onclick="checkPassword()">Giriş Yap 💖</button>
+</div>
+
+<div id="siteContent">
+    <h1>Sevgililer Günümüz Kutlu Olsun Aşkım ❤️</h1>
+    <p>Hayatımın en güzel anlamı sensin... Seninle her gün Sevgililer Günü 💕</p>
+</div>
+
+<audio id="music" loop>
+    <source src="anotherlove.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function checkPassword() {
+    var correctPassword = "1234";  // BURAYA İSTEDİĞİN ŞİFREYİ YAZ
+    var enteredPassword = document.getElementById("password").value;
+
+    if (enteredPassword === correctPassword) {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("siteContent").style.display = "block";
+        document.getElementById("music").play();
+    } else {
+        alert("Şifre yanlış 😢 Ama yine de seni seviyorum!");
+    }
+}
+</script>
+
+</body>
+</html>
 
