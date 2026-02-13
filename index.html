@@ -6,12 +6,10 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Arial, sans-serif;}
+body{font-family:Arial, sans-serif;overflow:hidden;}
 
-/* LOGIN */
 #login{
-position:fixed;
-width:100%;height:100vh;
+position:absolute;width:100%;height:100vh;
 background:#ff4da6;color:white;
 display:flex;flex-direction:column;
 justify-content:center;align-items:center;
@@ -26,10 +24,8 @@ padding:15px;border:none;border-radius:30px;
 text-align:center;font-size:18px;
 }
 
-/* BUTONLAR */
 button{
-display:block;
-margin:15px auto;
+margin:10px;
 padding:14px 30px;
 border:none;border-radius:30px;
 background:white;color:#ff4da6;
@@ -38,33 +34,31 @@ transition:0.3s;
 }
 button:hover{transform:scale(1.1);}
 
-/* CONTENT */
 #content{
 display:none;
-position:relative;
+position:absolute;
 width:100%;
-min-height:100vh;
-color:white;text-align:center;
+height:100vh;
+color:white;
+text-align:center;
 background-size:cover;
 background-position:center;
 }
 
-/* OVERLAY */
 .overlay{
 background:rgba(0,0,0,0.6);
-width:100%;
-min-height:100vh;
+width:100%;height:100%;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-padding:40px 20px;
+padding:20px;
 }
 
 #typedText{font-size:50px;margin-bottom:20px;}
 #days{font-size:24px;margin-bottom:30px;}
 
-/* GALERİ */
+/* Galeri */
 .heart-gallery{
 position:relative;
 width:320px;
@@ -96,7 +90,7 @@ transform:scale(1.2);
 .heart-gallery img:nth-child(7){ bottom:45px; right:70px; }
 .heart-gallery img:nth-child(8){ bottom:0; left:112px; }
 
-/* MODAL */
+/* Modal */
 #modal{
 display:none;
 position:fixed;
@@ -111,7 +105,7 @@ max-height:95%;
 object-fit:contain;
 }
 
-/* KALPLER */
+/* Kalpler */
 .heart{
 position:fixed;
 top:-10vh;
@@ -137,7 +131,6 @@ pointer-events:none;
 
 <div id="content">
 <div class="overlay">
-
 <h1 id="typedText"></h1>
 <h2 id="days"></h2>
 
@@ -220,7 +213,7 @@ function closeModal(){
 document.getElementById("modal").style.display="none";
 }
 
-/* HARİTA BUTONLARI */
+/* GOOGLE MAPS BUTONLARI */
 function openMap(){
 window.open("https://www.google.com/maps?q=41.0082,28.9784","_blank");
 }
