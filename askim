@@ -74,9 +74,6 @@ width:80px;
 height:80px;
 object-fit:cover;
 border-radius:20px;
-left:50%;
-top:50%;
-transform:translate(-50%, -50%);
 }
 
 
@@ -159,7 +156,7 @@ startHearts();
 startLiveCounter();
 typeWriter();
 startSlideshow();
-  setTimeout(arrangeHeart, 200);
+  arrangeHeart();
 
 
 }else{
@@ -251,9 +248,9 @@ const total = images.length;
 
 const centerX = 150;
 const centerY = 150;
-const scale = 9;
+const scale = 10;
 
-images.forEach((img, i) => {
+for(let i=0; i<total; i++){
 
 let t = (Math.PI * 2) * (i / total);
 
@@ -263,13 +260,12 @@ let y = 13*Math.cos(t)
         -2*Math.cos(3*t)
         -Math.cos(4*t);
 
-img.style.left = (centerX + x*scale) + "px";
-img.style.top  = (centerY - y*scale) + "px";
-
-});
+images[i].style.left = (centerX + x*scale) + "px";
+images[i].style.top  = (centerY - y*scale) + "px";
+}
 
 }
-}
+
 </script>
 
 </body>
