@@ -63,34 +63,23 @@ padding:20px;
 /* TAM DOLU 8 FOTOĞRAFLI KALP */
 .heart-gallery{
 position:relative;
-width:360px;
-height:320px;
+width:300px;
+height:300px;
 margin:0 auto 40px auto;
 }
 
 .heart-gallery img{
 position:absolute;
-width:85px;
-height:85px;
+width:80px;
+height:80px;
 object-fit:cover;
-border-radius:18px;
+border-radius:20px;
+left:50%;
+top:50%;
+transform:translate(-50%, -50%);
 }
 
-/* Üst iki bombe */
-.heart-gallery img:nth-child(1){ top:0; left:90px; }
-.heart-gallery img:nth-child(2){ top:0; right:90px; }
 
-/* Üst orta yanlar */
-.heart-gallery img:nth-child(3){ top:55px; left:35px; }
-.heart-gallery img:nth-child(4){ top:55px; right:35px; }
-
-/* Orta geniş kısım */
-.heart-gallery img:nth-child(5){ top:120px; left:10px; }
-.heart-gallery img:nth-child(6){ top:120px; right:10px; }
-
-/* Alt daralan */
-.heart-gallery img:nth-child(7){ top:185px; left:90px; }
-.heart-gallery img:nth-child(8){ top:235px; left:137px; }
 
 #modal{
 display:none;
@@ -170,6 +159,8 @@ startHearts();
 startLiveCounter();
 typeWriter();
 startSlideshow();
+  arrangeHeart();
+
 }else{
 alert("Yanlış şifre 😢");
 }
@@ -252,6 +243,26 @@ if(current>=images.length){current=0;}
 document.getElementById("content").style.backgroundImage=
 "url('"+images[current]+"')";
 },4000);
+function arrangeHeart(){
+const images = document.querySelectorAll(".heart-gallery img");
+const total = images.length;
+
+for(let i=0; i<total; i++){
+
+let t = (Math.PI * 2) * (i / total);
+
+let x = 16 * Math.pow(Math.sin(t),3);
+let y = 13*Math.cos(t)
+        -5*Math.cos(2*t)
+        -2*Math.cos(3*t)
+        -Math.cos(4*t);
+
+let scale = 8;
+
+images[i].style.left = (150 + x*scale) + "px";
+images[i].style.top = (150 - y*scale) + "px";
+}
+}
 }
 </script>
 
