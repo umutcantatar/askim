@@ -2,50 +2,106 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Sevgililer Günümüz 💖</title>
+<title>Bizim Hikayemiz ❤️</title>
 
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #ff69b4;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    color: white;
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial, sans-serif;overflow:hidden;}
+
+#login{
+position:absolute;width:100%;height:100vh;
+background:#ff4da6;color:white;
+display:flex;flex-direction:column;
+justify-content:center;align-items:center;
+text-align:center;z-index:10;
 }
 
-#login {
-    margin-top: 200px;
+#login h1{font-size:60px;margin-bottom:20px;}
+#login p{font-size:25px;margin-bottom:20px;}
+
+input{
+padding:15px;border:none;border-radius:30px;
+text-align:center;font-size:18px;
 }
 
-input {
-    padding: 10px;
-    border-radius: 20px;
-    border: none;
-    text-align: center;
+button{
+margin-top:15px;padding:12px 25px;
+border:none;border-radius:30px;
+background:white;color:#ff4da6;
+font-size:18px;cursor:pointer;
+transition:0.3s;
+}
+button:hover{transform:scale(1.1);}
+
+#content{
+display:none;position:absolute;width:100%;height:100vh;
+color:white;text-align:center;
+background-size:cover;background-position:center;
+animation:slideshow 40s infinite;
 }
 
-button {
-    padding: 10px 20px;
-    border-radius: 20px;
-    border: none;
-    background-color: white;
-    color: #ff69b4;
-    cursor: pointer;
-    margin-top: 10px;
+@keyframes slideshow{
+0%{background-image:url('foto1.jpg');}
+12%{background-image:url('foto2.jpg');}
+25%{background-image:url('foto3.jpg');}
+37%{background-image:url('foto4.jpg');}
+50%{background-image:url('foto5.jpg');}
+62%{background-image:url('foto6.jpg');}
+75%{background-image:url('foto7.jpg');}
+87%{background-image:url('foto8.jpg');}
+100%{background-image:url('foto1.jpg');}
 }
 
-button:hover {
-    background-color: #ffe6f0;
+.overlay{
+background:rgba(0,0,0,0.6);
+width:100%;height:100%;
+display:flex;flex-direction:column;
+justify-content:center;align-items:center;
+padding:20px;
 }
 
-#siteContent {
-    display: none;
-    margin-top: 150px;
-}
+#typedText{font-size:50px;margin-bottom:20px;}
+#days{font-size:30px;margin-bottom:20px;}
 
-h1 {
-    font-size: 50px;
+/* Kalp Galeri */
+.heart-gallery{
+position:relative;width:300px;height:300px;
+margin:20px auto;
+}
+.heart-gallery img{
+position:absolute;width:90px;height:90px;
+object-fit:cover;border-radius:15px;
+box-shadow:0 0 15px rgba(255,255,255,0.8);
+cursor:pointer;transition:0.3s;
+}
+.heart-gallery img:hover{transform:scale(1.2);}
+
+.heart-gallery img:nth-child(1){ top:0; left:105px; }
+.heart-gallery img:nth-child(2){ top:40px; left:40px; }
+.heart-gallery img:nth-child(3){ top:40px; right:40px; }
+.heart-gallery img:nth-child(4){ top:110px; left:0; }
+.heart-gallery img:nth-child(5){ top:110px; right:0; }
+.heart-gallery img:nth-child(6){ bottom:40px; left:60px; }
+.heart-gallery img:nth-child(7){ bottom:40px; right:60px; }
+.heart-gallery img:nth-child(8){ bottom:0; left:105px; }
+
+/* Modal */
+#modal{
+display:none;position:fixed;top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.9);
+justify-content:center;align-items:center;
+}
+#modal img{max-width:80%;max-height:80%;}
+
+/* Kalpler */
+.heart{
+position:absolute;color:pink;
+animation:fall linear infinite;
+}
+@keyframes fall{
+0%{transform:translateY(-10vh);}
+100%{transform:translateY(110vh);}
 }
 </style>
 </head>
@@ -53,35 +109,98 @@ h1 {
 <body>
 
 <div id="login">
-    <h2>Bu siteye sadece aşkım girebilir 💕</h2>
-    <input type="password" id="password" placeholder="Şifreyi Gir">
-    <br>
-    <button onclick="checkPassword()">Giriş Yap 💖</button>
+<h1>Bu Site Sadece Kalbimin Sahibine Ait 💖</h1>
+<p>Şifreyi sadece o biliyor...</p>
+<input type="password" id="password" placeholder="Şifreyi Gir">
+<button onclick="checkPassword()">Giriş Yap 💕</button>
 </div>
 
-<div id="siteContent">
-    <h1>Sevgililer Günümüz Kutlu Olsun Aşkım ❤️</h1>
-    <p>Hayatımın en güzel anlamı sensin... Seninle her gün Sevgililer Günü 💕</p>
+<div id="content">
+<div class="overlay">
+<h1 id="typedText"></h1>
+<h2 id="days"></h2>
+
+<div class="heart-gallery">
+<img src="foto1.jpg" onclick="openModal(this.src)">
+<img src="foto2.jpg" onclick="openModal(this.src)">
+<img src="foto3.jpg" onclick="openModal(this.src)">
+<img src="foto4.jpg" onclick="openModal(this.src)">
+<img src="foto5.jpg" onclick="openModal(this.src)">
+<img src="foto6.jpg" onclick="openModal(this.src)">
+<img src="foto7.jpg" onclick="openModal(this.src)">
+<img src="foto8.jpg" onclick="openModal(this.src)">
+</div>
+
+<button onclick="proposal()">Benimle Sonsuza Kadar? 💍</button>
+
+</div>
+</div>
+
+<div id="modal" onclick="closeModal()">
+<img id="modalImg">
 </div>
 
 <audio id="music" loop>
-    <source src="anotherlove.mp3" type="audio/mpeg">
+<source src="anotherlove.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-function checkPassword() {
-    var correctPassword = "1234";  // BURAYA İSTEDİĞİN ŞİFREYİ YAZ
-    var enteredPassword = document.getElementById("password").value;
+function checkPassword(){
+if(document.getElementById("password").value==="24072024"){
+document.getElementById("login").style.display="none";
+document.getElementById("content").style.display="block";
+document.getElementById("music").play();
+startHearts();
+calculateDays();
+typeWriter();
+}else{
+alert("Yanlış şifre 😢");
+}
+}
 
-    if (enteredPassword === correctPassword) {
-        document.getElementById("login").style.display = "none";
-        document.getElementById("siteContent").style.display = "block";
-        document.getElementById("music").play();
-    } else {
-        alert("Şifre yanlış 😢 Ama yine de seni seviyorum!");
-    }
+function calculateDays(){
+var startDate=new Date("2024-07-24");
+var today=new Date();
+var diff=Math.floor((today-startDate)/(1000*60*60*24));
+document.getElementById("days").innerHTML=diff+" gündür birlikteyiz 💕";
+}
+
+function startHearts(){
+for(let i=0;i<50;i++){
+let heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+10)+"px";
+heart.style.animationDuration=(Math.random()*3+2)+"s";
+document.body.appendChild(heart);
+}
+}
+
+function openModal(src){
+document.getElementById("modal").style.display="flex";
+document.getElementById("modalImg").src=src;
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+
+function proposal(){
+alert("Seni sonsuza kadar seveceğim ❤️");
+}
+
+var text="İyi ki Varsın Aşkım ❤️";
+var i=0;
+function typeWriter(){
+if(i<text.length){
+document.getElementById("typedText").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typeWriter,100);
+}
 }
 </script>
 
 </body>
 </html>
+
