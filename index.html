@@ -159,7 +159,8 @@ startHearts();
 startLiveCounter();
 typeWriter();
 startSlideshow();
-  arrangeHeart();
+  setTimeout(arrangeHeart, 200);
+
 
 }else{
 alert("Yanlış şifre 😢");
@@ -244,10 +245,15 @@ document.getElementById("content").style.backgroundImage=
 "url('"+images[current]+"')";
 },4000);
 function arrangeHeart(){
+
 const images = document.querySelectorAll(".heart-gallery img");
 const total = images.length;
 
-for(let i=0; i<total; i++){
+const centerX = 150;
+const centerY = 150;
+const scale = 9;
+
+images.forEach((img, i) => {
 
 let t = (Math.PI * 2) * (i / total);
 
@@ -257,11 +263,11 @@ let y = 13*Math.cos(t)
         -2*Math.cos(3*t)
         -Math.cos(4*t);
 
-let scale = 8;
+img.style.left = (centerX + x*scale) + "px";
+img.style.top  = (centerY - y*scale) + "px";
 
-images[i].style.left = (150 + x*scale) + "px";
-images[i].style.top = (150 - y*scale) + "px";
-}
+});
+
 }
 }
 </script>
